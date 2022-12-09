@@ -1,0 +1,10 @@
+--swiftversion 5.6
+# file options
+ 
+# format options
+--indent 4
+--maxwidth 200
+--disable blankLinesAtStartOfScope
+--disable emptyBraces
+--stripunusedargs closure-only
+--ifdef no-indent
