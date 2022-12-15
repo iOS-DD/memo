@@ -17,7 +17,12 @@ let project = Project.app(name: projectName,
                           platform: .iOS,
                           iOSTargetVersion: iOSTargetVersion,
                           infoPlist: infoPlistPath,
-                          dependencies: [])
+                          dependencies: [
+                            .external(name: "RIBs"),
+                            .external(name: "RxSwift"),
+                            .external(name: "SnapKit"),
+                            .external(name: "Then")
+                          ])
 
 
 

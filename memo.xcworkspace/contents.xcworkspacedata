@@ -33,10 +33,19 @@
                      location = "group:Nimble/Nimble.xcodeproj">
                   </FileRef>
                   <FileRef
+                     location = "group:RIBs/RIBs.xcodeproj">
+                  </FileRef>
+                  <FileRef
                      location = "group:RxNimble/RxNimble.xcodeproj">
                   </FileRef>
                   <FileRef
                      location = "group:RxSwift/RxSwift.xcodeproj">
+                  </FileRef>
+                  <FileRef
+                     location = "group:SnapKit/SnapKit.xcodeproj">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Then/Then.xcodeproj">
                   </FileRef>
                </Group>
             </Group>

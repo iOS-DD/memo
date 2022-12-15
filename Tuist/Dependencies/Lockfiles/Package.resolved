@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "ribs",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/uber/RIBs",
+      "state" : {
+        "revision" : "c03347f24e10be4e08ba3b7865e8818719c016d0",
+        "version" : "0.13.2"
+      }
+    },
+    {
       "identity" : "rxnimble",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/RxSwiftCommunity/RxNimble.git",
@@ -43,6 +52,24 @@
       "state" : {
         "revision" : "b4307ba0b6425c0ba4178e138799946c3da594f8",
         "version" : "6.5.0"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit",
+      "state" : {
+        "revision" : "d458564516e5676af9c70b4f4b2a9178294f1bc6",
+        "version" : "5.0.1"
+      }
+    },
+    {
+      "identity" : "then",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/devxoul/Then",
+      "state" : {
+        "revision" : "d41ef523faef0f911369f79c0b96815d9dbb6d7a",
+        "version" : "3.0.0"
       }
     }
   ],
