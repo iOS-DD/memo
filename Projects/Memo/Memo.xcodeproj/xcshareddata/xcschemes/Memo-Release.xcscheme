@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65D5BB028DD3948C87B2F2D4"
-               BuildableName = "memo.app"
-               BlueprintName = "memo"
-               ReferencedContainer = "container:memo.xcodeproj">
+               BlueprintIdentifier = "F89F83D962E964419FDE9238"
+               BuildableName = "Memo.app"
+               BlueprintName = "Memo"
+               ReferencedContainer = "container:Memo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,18 +32,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4B6F3FBBA3E764F252D469E2"
-               BuildableName = "memoTests.xctest"
-               BlueprintName = "memoTests"
-               ReferencedContainer = "container:memo.xcodeproj">
+               BlueprintIdentifier = "8F2504D313D1DA6D3AC5E6DB"
+               BuildableName = "MemoTests.xctest"
+               BlueprintName = "MemoTests"
+               ReferencedContainer = "container:Memo.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      disablePerformanceAntipatternChecker = "YES"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -54,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65D5BB028DD3948C87B2F2D4"
-            BuildableName = "memo.app"
-            BlueprintName = "memo"
-            ReferencedContainer = "container:memo.xcodeproj">
+            BlueprintIdentifier = "F89F83D962E964419FDE9238"
+            BuildableName = "Memo.app"
+            BlueprintName = "Memo"
+            ReferencedContainer = "container:Memo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -71,10 +72,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65D5BB028DD3948C87B2F2D4"
-            BuildableName = "memo.app"
-            BlueprintName = "memo"
-            ReferencedContainer = "container:memo.xcodeproj">
+            BlueprintIdentifier = "F89F83D962E964419FDE9238"
+            BuildableName = "Memo.app"
+            BlueprintName = "Memo"
+            ReferencedContainer = "container:Memo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

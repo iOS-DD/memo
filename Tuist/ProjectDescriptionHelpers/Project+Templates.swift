@@ -7,7 +7,7 @@ import ProjectDescription
 
 
 extension Project {
-    private static let organizationName = "team.io"
+    private static let organizationName = "com.dd"
     
     public static func app(name: String,
                            platform: Platform,
@@ -63,7 +63,7 @@ private extension Project {
         let sources = Target(name: name,
                              platform: platform,
                              product: .framework,
-                             bundleId: "team.io.\(name)",
+                             bundleId: "\(organizationName).\(name)",
                              deploymentTarget: .iOS(targetVersion: iOSTargetVersion, devices: [.iphone]),
                              infoPlist: .default,
                              sources: ["Sources/**"],
@@ -72,14 +72,14 @@ private extension Project {
         let tests = Target(name: "\(name)Tests",
                            platform: platform,
                            product: .unitTests,
-                           bundleId: "team.io.\(name)Tests",
+                           bundleId: "\(organizationName).\(name)Tests",
                            infoPlist: .default,
                            sources: ["Tests/**"],
                            resources: [],
                            dependencies: [
                             .target(name: name),
-                            .external(name: "RxTest"),
-                            .external(name: "RxNimble")
+                            .xctest,
+                            .package(product: "RxTest"),
                            ])
         return [sources, tests]
     }
@@ -91,7 +91,7 @@ private extension Project {
             name: name,
             platform: platform,
             product: .app,
-            bundleId: "team.io.\(name)",
+            bundleId: "\(organizationName).\(name)",
             deploymentTarget: .iOS(targetVersion: iOSTargetVersion, devices: [.iphone]),
             infoPlist: .extendingDefault(with: infoPlist),
             sources: ["Sources/**"],
@@ -103,13 +103,13 @@ private extension Project {
             name: "\(name)Tests",
             platform: platform,
             product: .unitTests,
-            bundleId: "team.io.Tests",
+            bundleId: "\(organizationName).Tests",
             infoPlist: .default,
             sources: ["Tests/**"],
             dependencies: [
                 .target(name: "\(name)"),
-                .external(name: "RxTest"),
-                .external(name: "RxNimble")
+                .xctest,
+                .package(product: "RxTest"),
             ])
         return [mainTarget, testTarget]
     }
@@ -121,7 +121,7 @@ private extension Project {
             name: name,
             platform: platform,
             product: .app,
-            bundleId: "team.io.\(name)",
+            bundleId: "\(organizationName).\(name)",
             deploymentTarget: .iOS(targetVersion: iOSTargetVersion, devices: [.iphone]),
             infoPlist: .file(path: .relativeToManifest(infoPlist)),
             sources: ["Sources/**"],
@@ -133,13 +133,13 @@ private extension Project {
             name: "\(name)Tests",
             platform: platform,
             product: .unitTests,
-            bundleId: "team.io.Tests",
+            bundleId: "\(organizationName).Tests",
             infoPlist: .default,
             sources: ["Tests/**"],
             dependencies: [
                 .target(name: "\(name)"),
-                .external(name: "RxTest"),
-                .external(name: "RxNimble")
+                .xctest,
+                .package(product: "RxTest"),
             ])
         return [mainTarget, testTarget]
     }
