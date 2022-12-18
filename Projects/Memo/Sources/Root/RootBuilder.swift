@@ -20,7 +20,7 @@ final class RootComponent: Component<RootDependency> {
 // MARK: - Builder
 
 protocol RootBuildable: Buildable {
-    func build(withListener listener: RootListener) -> RootRouting
+    func build() -> LaunchRouting
 }
 
 final class RootBuilder: Builder<RootDependency>, RootBuildable {
@@ -29,11 +29,14 @@ final class RootBuilder: Builder<RootDependency>, RootBuildable {
         super.init(dependency: dependency)
     }
 
-    func build(withListener listener: RootListener) -> RootRouting {
-        let component = RootComponent(dependency: dependency)
+    func build() -> RIBs.LaunchRouting {
         let viewController = RootViewController()
+        _ = RootComponent(dependency: dependency)
         let interactor = RootInteractor(presenter: viewController)
-        interactor.listener = listener
-        return RootRouter(interactor: interactor, viewController: viewController)
+
+        return RootRouter(
+            interactor: interactor,
+            viewController: viewController
+        )
     }
 }
