@@ -12,13 +12,10 @@ protocol RootInteractable: Interactable {
     var listener: RootListener? { get set }
 }
 
-protocol RootViewControllable: ViewControllable {
-    // TODO: Declare methods the router invokes to manipulate the view hierarchy.
-}
+protocol RootViewControllable: ViewControllable {}
 
 final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, RootRouting {
 
-    // TODO: Constructor inject child builder protocols to allow building children.
     override init(interactor: RootInteractable, viewController: RootViewControllable) {
         super.init(interactor: interactor, viewController: viewController)
         interactor.router = self
