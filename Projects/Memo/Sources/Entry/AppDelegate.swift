@@ -5,11 +5,13 @@
 //  Created by enne on 2022/12/09.
 //
 
+import RIBs
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    private var launchRouter: LaunchRouting?
 
     func application(
         _ application: UIApplication,
@@ -17,9 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-        // TODO: - 강현정: 루트 추가
-        self.window?.rootViewController = ViewController()
-        self.window?.makeKeyAndVisible()
+        let launchRouter = RootBuilder(dependency: AppComponent()).build()
+        self.launchRouter = launchRouter
+        launchRouter.launch(from: window)
         return true
     }
 }
