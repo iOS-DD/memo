@@ -22,7 +22,6 @@
 		C558072FD6C70E869F441859 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C33B251B28167DF4DE41D93 /* LaunchScreen.storyboard */; };
 		C775A6AEA2B838C66A705E61 /* RIBs in Frameworks */ = {isa = PBXBuildFile; productRef = 854262613D6E01C505B4BA92 /* RIBs */; };
 		D7A4043F304D44D788F202C6 /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = C28E9DA5AB248067FB46BA51 /* RxTest */; };
-		F586E01085E5E1E424D057F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9C98DECF6BD5633B33EE11 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +72,6 @@
 		9247DC5403955484D94D5396 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A6B3DBF7CA9695FCA2F6C36E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		E1A4626C4ECCA7F9DC422AC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		FB9C98DECF6BD5633B33EE11 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +122,6 @@
 				004903F6294ED6D7005A95B6 /* RootInteractor.swift */,
 				004903F4294ED6D7005A95B6 /* RootRouter.swift */,
 				004903F5294ED6D7005A95B6 /* RootViewController.swift */,
-				FB9C98DECF6BD5633B33EE11 /* ViewController.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -313,7 +310,6 @@
 				004903FC294ED723005A95B6 /* AppComponent.swift in Sources */,
 				004903F8294ED6D7005A95B6 /* RootRouter.swift in Sources */,
 				C2DCDABC27B3D1BB66DAFFF4 /* AppDelegate.swift in Sources */,
-				F586E01085E5E1E424D057F5 /* ViewController.swift in Sources */,
 				004903F7294ED6D7005A95B6 /* RootBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
