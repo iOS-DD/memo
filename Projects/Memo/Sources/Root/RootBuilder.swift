@@ -25,12 +25,15 @@ final class RootBuilder: Builder<RootDependency>, RootBuildable {
 
     func build() -> RIBs.LaunchRouting {
         let viewController = RootViewController()
-        _ = RootComponent(dependency: dependency)
+        let component = RootComponent(dependency: dependency)
         let interactor = RootInteractor(presenter: viewController)
+
+        let tabBuilder = TabBuilder(dependency: component)
 
         return RootRouter(
             interactor: interactor,
-            viewController: viewController
+            viewController: viewController,
+            tabBuilder: tabBuilder
         )
     }
 }
