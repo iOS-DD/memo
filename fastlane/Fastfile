@@ -1,0 +1,22 @@
+default_platform(:ios)
+
+platform :ios do
+
+  desc "Firebase Dev 배포"
+  lane :develop do
+    build_app(
+      workspace: "Memo.xcworkspace",
+      scheme: "Memo-Dev",
+      xcargs: "-allowProvisioningUpdates"
+    )
+    
+    firebase_app_distribution(
+      # App ID
+      app: "",
+      # fastlane add_plugin firebase_app_distribution
+      # fastlane run firebase_app_distribution_login
+      firebase_cli_token: "", 
+      groups: "iOS"
+    )
+  end
+end

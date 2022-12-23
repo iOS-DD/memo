@@ -5,6 +5,7 @@ public enum RemoteDependencies: String, CaseIterable, Packageable {
     case ribs = "RIBs"
     case then = "Then"
     case snapKit = "SnapKit"
+    case firebase = "Firebase"
 
     public var packageSource: Package {
         switch self {
@@ -16,6 +17,8 @@ public enum RemoteDependencies: String, CaseIterable, Packageable {
             return .remote(url: "\(self.github)/devxoul/\(self.rawValue)", requirement: .upToNextMinor(from: "3.0.0"))
         case .snapKit:
             return .remote(url: "\(self.github)/SnapKit/\(self.rawValue).git", requirement: .upToNextMinor(from: "5.0.1"))
+        case .firebase:
+            return .remote(url: "\(self.github)/firebase/firebase-ios-sdk.git", requirement: .upToNextMinor(from: "10.0.0"))
         }
     }
 }

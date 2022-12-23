@@ -59,9 +59,7 @@ let project = Project(
             wrapsLines: true
         )
     ),
-    packages: [
-        RemoteDependencies.allPackageSource
-    ].flatMap { $0 },
+    packages: [RemoteDependencies.allPackageSource].flatMap { $0 },
     targets: [
         appTarget,
         testTarget

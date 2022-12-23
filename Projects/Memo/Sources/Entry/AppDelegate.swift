@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private var launchRouter: LaunchRouting?
 
+    private var appManager = AppManager.shared
+
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -22,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let launchRouter = RootBuilder(dependency: AppComponent()).build()
         self.launchRouter = launchRouter
         launchRouter.launch(from: window)
+        // appManager.start()
         return true
     }
 }
