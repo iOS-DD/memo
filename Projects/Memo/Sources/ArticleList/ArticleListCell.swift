@@ -8,8 +8,20 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 final class ArticleListCell: UITableViewCell {
     static let reuseIdentifier: String = "ArticleListCell"
+
+    private let containerView = UIView().then {
+        $0.backgroundColor = .white
+
+        $0.layer.borderColor = UIColor.gray.withAlphaComponent(0.08).cgColor
+        $0.layer.borderWidth = 1
+
+        $0.layer.cornerRadius = 4
+    }
 
     private let articleContentLabel = UILabel().then {
         $0.font = .systemFont(ofSize: 14)
@@ -57,22 +69,38 @@ final class ArticleListCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        articleContentLabel.text = nil
+        sourceLabel.text = nil
+        pageLabel.text = nil
+        writerLabel.text = nil
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        renderShadow()
+    }
+
     private func setViewAttributes() {
-        backgroundColor = .white
-
-        layer.cornerRadius = 4
-        layer.shadowColor = UIColor.gray.cgColor
-        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
-        layer.shadowOpacity = 0.1
-        layer.shadowRadius = 4
-
+        backgroundColor = .clear
         selectionStyle = .none
     }
 
     private func render() {
-        addSubview(articleContentLabel)
-        addSubview(sourceStackView)
-        addSubview(additionalInformationStackView)
+        contentView.addSubview(containerView)
+
+        containerView.snp.makeConstraints {
+            $0.height.greaterThanOrEqualTo(48)
+            $0.top.bottom.equalToSuperview().inset(8)
+            $0.leading.trailing.equalToSuperview().inset(16)
+        }
+
+        containerView.addSubview(articleContentLabel)
+        containerView.addSubview(sourceStackView)
+        containerView.addSubview(additionalInformationStackView)
         sourceStackView.addArrangedSubview(sourceLabel)
         sourceStackView.addArrangedSubview(pageLabel)
         additionalInformationStackView.addArrangedSubview(sourceStackView)
@@ -84,15 +112,29 @@ final class ArticleListCell: UITableViewCell {
 
         additionalInformationStackView.snp.makeConstraints {
             $0.top.equalTo(articleContentLabel.snp.bottom).offset(4)
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.lessThanOrEqualToSuperview().inset(16)
             $0.bottom.equalToSuperview().inset(8)
         }
+    }
+
+    private func renderShadow() {
+        guard
+            containerView.bounds.width != 0.0,
+            containerView.layer.shadowColor != UIColor.gray.cgColor
+        else {
+             return
+        }
+
+        containerView.layer.shadowColor = UIColor.gray.withAlphaComponent(0.1).cgColor
+        containerView.layer.shadowPath = UIBezierPath(rect: containerView.bounds).cgPath
+        containerView.layer.shadowRadius = 4
     }
 
     func configure(data: Article) {
         articleContentLabel.text = data.content
         sourceLabel.text = data.source
-        pageLabel.text = "\(data.page)"
+        pageLabel.text = "p.\(data.page)"
         writerLabel.text = data.writer
     }
 }
