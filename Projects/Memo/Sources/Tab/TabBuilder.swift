@@ -29,6 +29,13 @@ final class TabBuilder: Builder<TabDependency>, TabBuildable {
         let viewController = TabViewController()
         let interactor = TabInteractor(presenter: viewController)
         interactor.listener = listener
-        return TabRouter(interactor: interactor, viewController: viewController)
+
+        let categoryBuilder = CategoryBuilder(dependency: component)
+
+        return TabRouter(
+            interactor: interactor,
+            viewController: viewController,
+            categoryBuilder: categoryBuilder
+        )
     }
 }
