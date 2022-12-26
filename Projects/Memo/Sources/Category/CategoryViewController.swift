@@ -48,12 +48,14 @@ final class CategoryViewController: UIViewController, CategoryPresentable, Categ
     }
 
     private func setUI() {
-        self.title = "분류"
+        self.tabBarItem = .init(title: nil, image: .init(systemName: "tag"), selectedImage: .init(systemName: "tag.fill"))
+        self.navigationItem.title = "분류"
         self.view.backgroundColor = .white
         self.view.addSubview(collectionView)
         collectionView.collectionViewLayout = layout
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.alwaysBounceVertical = true
 
         collectionView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
