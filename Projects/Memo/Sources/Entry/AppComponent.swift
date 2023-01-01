@@ -9,8 +9,10 @@
 import RIBs
 
 class AppComponent: Component<EmptyDependency>, RootDependency {
+    var categoriesUseCase: CategoriesUseCase
 
-    init() {
-      super.init(dependency: EmptyComponent())
+    init(categoriesUseCase: CategoriesUseCase) {
+        self.categoriesUseCase = categoriesUseCase
+        super.init(dependency: EmptyComponent())
     }
 }

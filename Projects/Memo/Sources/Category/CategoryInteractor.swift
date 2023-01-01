@@ -21,8 +21,14 @@ final class CategoryInteractor: PresentableInteractor<CategoryPresentable>, Cate
 
     weak var router: CategoryRouting?
     weak var listener: CategoryListener?
+    private let categoriesUseCase: CategoriesUseCase
 
-    override init(presenter: CategoryPresentable) {
+    init(
+        presenter: CategoryPresentable,
+        categoriesUseCase: CategoriesUseCase
+    ) {
+        self.categoriesUseCase = categoriesUseCase
+
         super.init(presenter: presenter)
         presenter.listener = self
     }

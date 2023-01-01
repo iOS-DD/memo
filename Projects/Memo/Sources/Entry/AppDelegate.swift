@@ -19,7 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-        let launchRouter = RootBuilder(dependency: AppComponent()).build()
+        let launchRouter = RootBuilder(
+            dependency: AppComponent(
+                categoriesUseCase: DefaultCategoriesUseCase(categoryRepository: DefaultCategoryRepository())
+            )
+        ).build()
         self.launchRouter = launchRouter
         launchRouter.launch(from: window)
         return true

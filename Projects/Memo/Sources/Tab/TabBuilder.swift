@@ -8,7 +8,9 @@
 
 import RIBs
 
-protocol TabDependency: Dependency {}
+protocol TabDependency: Dependency {
+    var categoriesUseCase: CategoriesUseCase { get }
+}
 
 final class TabComponent: Component<TabDependency> {}
 
