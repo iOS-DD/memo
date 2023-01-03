@@ -8,9 +8,13 @@
 
 import RIBs
 
-protocol CategoryDependency: Dependency {}
+protocol CategoryDependency: Dependency {
+    var categoriesUseCase: CategoriesUseCase { get }
+}
 
-final class CategoryComponent: Component<CategoryDependency> {}
+final class CategoryComponent: Component<CategoryDependency> {
+    var categoriesUseCase: CategoriesUseCase { dependency.categoriesUseCase }
+}
 
 // MARK: - Builder
 
@@ -27,7 +31,10 @@ final class CategoryBuilder: Builder<CategoryDependency>, CategoryBuildable {
     func build(withListener listener: CategoryListener) -> CategoryRouting {
         let component = CategoryComponent(dependency: dependency)
         let viewController = CategoryViewController()
-        let interactor = CategoryInteractor(presenter: viewController)
+        let interactor = CategoryInteractor(
+            presenter: viewController,
+            categoriesUseCase: component.categoriesUseCase
+        )
         interactor.listener = listener
         return CategoryRouter(interactor: interactor, viewController: viewController)
     }

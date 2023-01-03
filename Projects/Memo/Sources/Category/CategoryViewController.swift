@@ -15,21 +15,20 @@ import UIKit
 struct Category {
     let icon: String
     let name: String
-    let count: Int
+    var count: Int
 }
 
-protocol CategoryPresentableListener: AnyObject {}
+protocol CategoryPresentableListener: AnyObject {
+    var categories: Observable<[Category]> { get }
+
+    func didTapCell(_ category: Category)
+}
 
 final class CategoryViewController: UIViewController, CategoryPresentable, CategoryViewControllable {
     weak var listener: CategoryPresentableListener?
+    private let disposeBag: DisposeBag = .init()
 
-    let categories: [Category] = [
-        .init(icon: "bus", name: "버스", count: 22123),
-        .init(icon: "tram", name: "트램", count: 4),
-        .init(icon: "ferry.fill", name: "페리", count: 111),
-        .init(icon: "car.fill", name: "차", count: 71),
-        .init(icon: "airplane", name: "비행기", count: 0),
-    ]
+    private var categories: [Category] = []
 
     private let layout: UICollectionViewFlowLayout = .init().then {
         $0.scrollDirection = .vertical
@@ -45,6 +44,7 @@ final class CategoryViewController: UIViewController, CategoryPresentable, Categ
         super.viewDidLoad()
 
         setUI()
+        bind()
     }
 
     private func setUI() {
@@ -61,6 +61,17 @@ final class CategoryViewController: UIViewController, CategoryPresentable, Categ
             make.leading.trailing.bottom.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
         }
+    }
+
+    private func bind() {
+        listener?.categories
+            .subscribe(on: MainScheduler.instance)
+            .withUnretained(self)
+            .subscribe(onNext: { owner, categories in
+                owner.categories = categories
+                owner.collectionView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -109,5 +120,13 @@ extension CategoryViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let category = categories[safe: indexPath.row] else {
+            return
+        }
+
+        listener?.didTapCell(category)
     }
 }

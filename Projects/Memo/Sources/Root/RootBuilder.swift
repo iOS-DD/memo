@@ -7,7 +7,9 @@
 
 import RIBs
 
-protocol RootDependency: Dependency {}
+protocol RootDependency: Dependency {
+    var categoriesUseCase: CategoriesUseCase { get }
+}
 
 final class RootComponent: Component<RootDependency> {}
 

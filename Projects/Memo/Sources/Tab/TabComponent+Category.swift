@@ -8,4 +8,8 @@
 
 import RIBs
 
-extension TabComponent: CategoryDependency {}
+extension TabComponent: CategoryDependency {
+    var categoriesUseCase: CategoriesUseCase {
+        dependency.categoriesUseCase
+    }
+}

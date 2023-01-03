@@ -9,5 +9,7 @@
 import RIBs
 
 extension RootComponent: TabDependency {
-    
+    var categoriesUseCase: CategoriesUseCase {
+        dependency.categoriesUseCase
+    }
 }
