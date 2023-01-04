@@ -21,7 +21,8 @@ let appTarget = Target(
     infoPlist: .file(path: "Supported Files/Info.plist"),
     sources: "Sources/**",
     resources: "Resources/**",
-    dependencies: [RemoteDependencies.allPackages].flatMap { $0 }
+    dependencies: [RemoteDependencies.allPackages].flatMap { $0 },
+    coreDataModels: [CoreDataModel("Sources/CoreDataClient/Model.xcdatamodeld")]
 )
 
 let testTarget = Target(
