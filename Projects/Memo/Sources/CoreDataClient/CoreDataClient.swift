@@ -58,7 +58,9 @@ class CoreDataClient {
         do {
             try context.save()
         } catch {
+            #if DEBUG
             print("Failed to save context: \(error)")
+            #endif
         }
     }
 }
@@ -99,7 +101,9 @@ extension CoreDataClient: CoreDataClientProtocol {
             let results = try context.fetch(request)
             return results
         } catch {
+            #if DEBUG
             print("Failed to fetch Articles: \(error)")
+            #endif
         }
 
         return []
@@ -146,7 +150,9 @@ extension CoreDataClient: CoreDataClientProtocol {
             try context.save()
         } catch {
             context.rollback()
+            #if DEBUG
             print("Failed to delete Article: \(id), \(error)")
+            #endif
         }
     }
 
@@ -157,7 +163,9 @@ extension CoreDataClient: CoreDataClientProtocol {
             let result = try context.fetch(request)
             return result.first
         } catch {
+            #if DEBUG
             print("Failed to find Article: \(id)")
+            #endif
         }
 
         return nil
