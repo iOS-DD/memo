@@ -8,11 +8,20 @@ public protocol Packageable {
 }
 
 extension Packageable where Self: CaseIterable, Self: RawRepresentable, Self.RawValue == String {
-    public static var allPackages: [TargetDependency] { allCases.map(\.package) }
+    public static var allPackages: [TargetDependency] {
+        [
+            .package(product: RemoteDependencies.rxSwift.packageName),
+            .package(product: RemoteDependencies.ribs.packageName),
+            .package(product: RemoteDependencies.then.packageName),
+            .package(product: RemoteDependencies.snapKit.packageName),
+            .package(product: "FirebaseAnalytics"),
+            .package(product: "FirebaseMessaging"),
+            .package(product: "FirebaseCrashlytics"),
+        ]
+    }
     public static var allPackageSource: [Package] { allCases.map(\.packageSource) }
 }
 
 extension RawRepresentable where Self.RawValue == String {
     public var packageName: String { self.rawValue }
-    public var package: TargetDependency { .package(product: self.packageName) }
 }
